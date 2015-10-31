@@ -1,5 +1,5 @@
 var fs = require('fs');
-var bitmap = fs.readFileSync('bitmap1.bmp');
+var bitmap = fs.readFileSync('non-palettebitmap.bmp');
 console.log(bitmap.toString('utf-8', 0, 2));
 
 console.log('size ' + bitmap.readUInt32LE(2));
