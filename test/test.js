@@ -5,7 +5,7 @@ var expect = require('chai').expect;
 var fs = require('fs');
 
 describe('some test', function() {
-	it('should do something', function(done) {
+  it('should do something', function(done) {
 
 	});
 
