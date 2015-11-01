@@ -1,32 +1,26 @@
 'use strict'
 
 var fs = require('fs');
+var transform = require(__dirname + '/lib/transform.js');
 var fileName = 'bitmap1.bmp';
 var transformedFileName = 'bitmap_tranformed.bmp';
-var pixArrOffset = 1078; //Byte offset of pixel array in bitmap
-var bytesPerPixel = 1;
-var pixArrWidth = 100;
-var pixArrHeight = 100;
-var pixArrBytes = pixArrWidth * pixArrHeight * bytesPerPixel;
-var transformedBuffer;
-
-function transform(uint) {
-if (uint === 22) return 12;
-return uint;
-}
 
 fs.readFile(fileName, function (err, data) {
   if (err) throw err;
-  for (var i = 0; i < pixArrBytes; i++) {
-    var current = data.readUInt8((pixArrOffset) + i);
-    var currentTransformed = transform(current);
-    data.writeUInt8(currentTransformed, (pixArrOffset) + i);
-  }
-  transformedBuffer = data;
-  // return transformedBuffer;
 
+  // READ META DATA FROM BITMAP
+  var pixArrOffset = data.readUInt32LE(10); //Byte offset of pixel array in bitmap
+  var bytesPerPixel = data.readUInt16LE(28)/8;
+  var pixArrWidth = data.readInt32LE(18);
+  var pixArrHeight = data.readInt32LE(22);
+  var pixArrBytes = pixArrWidth * pixArrHeight * bytesPerPixel;
+
+  // TRANFORM PIXEL ARRAY
+  var transformedBuffer = transform(data, pixArrBytes, pixArrOffset);
+
+  // WRITE TRANSFORMED PIXEL ARRAY INTO NEW BITMAP FILE
   fs.writeFile('bitmap_tranformed.bmp', transformedBuffer, function (err){
     if (err) throw err;
-    if (!err) console.log('transformed ' + fileName + ' into ' + transformedFileName + '!');
+    if (!err) console.log('Successfully transformed ' + fileName + ' into ' + transformedFileName + '!');
   });
 });
