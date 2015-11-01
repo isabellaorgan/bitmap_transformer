@@ -28,6 +28,6 @@ gulp.task('jshint:app', function() {
 	.pipe(jshint.reporter('default'));
 });
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
-gulp.task('default', ['jshint']);
+gulp.task('default', ['jshint', 'mocha']);
 
 
