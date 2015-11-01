@@ -1,6 +1,9 @@
+'use strict'
+
 var gulp = require('gulp');
+var mocha = require('gulp-mocha');
 var jshint = require('gulp-jshint');
-var appFiles = ['index.js', './lib/**/*.js', 'bin/**/*.js'];
+var appFiles = ['bitmap.js', './lib/**/*.js'];
 var testFiles = ['./test/**/*.js'];
 
 gulp.task('jshint:test', function() {
@@ -26,4 +29,5 @@ gulp.task('jshint:app', function() {
 });
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
 gulp.task('default', ['jshint']);
+
 

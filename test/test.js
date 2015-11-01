@@ -1,6 +1,6 @@
 'use strict';
 
-var buffer = require('../lib/buffer.js');
+var transform = require('../lib/transform.js');
 var expect = require('chai').expect;
 var fs = require('fs');
 

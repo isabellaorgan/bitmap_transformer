@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var fs = require('fs');
 var transform = require(__dirname + '/lib/transform.js');
@@ -15,7 +15,7 @@ fs.readFile(fileName, function (err, data) {
   var pixArrHeight = data.readInt32LE(22);
   var pixArrBytes = pixArrWidth * pixArrHeight * bytesPerPixel;
 
-  // TRANFORM PIXEL ARRAY
+  // TRANSFORM PIXEL ARRAY
   var transformedBuffer = transform(data, pixArrBytes, pixArrOffset);
 
   // WRITE TRANSFORMED PIXEL ARRAY INTO NEW BITMAP FILE

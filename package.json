@@ -7,11 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "test":  "./node_modules/mocha/bin/mocha test",
+    "test": "./node_modules/mocha/bin/mocha test",
     "start": "echo 'hello world'",
     "custom": "echo 'custom'"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/isabellaorgan/bitmap_transformer"
   },
@@ -28,6 +28,7 @@
     "gulp": "^3.9.0",
     "gulp-jshint": "^1.12.0",
     "gulp-mocha": "^2.1.3",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "mocha-jshint": "^2.2.5"
   }
 }
