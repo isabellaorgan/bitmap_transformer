@@ -15,9 +15,8 @@ describe('The wild test of the transform function appears...', function() {
     expect(transform(data, pixelbytes, offset)).to.eql(finalData);
     done();
 	});
-  it('should confirm that the original bitmap data is not equal to the transformed bitmap data', function(done){
+  it('should confirm that the original bitmap data is not equal to the transformed bitmap data', function(done) {
     expect(data).to.not.equal(finalData);
     done();
   });
 });
-
